@@ -1,30 +1,33 @@
-// This file doesn't go through babel or webpack transformation.
-// Make sure the syntax and sources this file requires are compatible with the current node version you are running
-// See https://github.com/zeit/next.js/issues/1245 for discussions on Universal Webpack or universal Babel
-const { createServer } = require('http')
-const { parse } = require('url')
+const PORT = 3000
+const SERVER_TIMEOUT = 10000
+
 const next = require('next')
+const express = require('express')
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev, dir: './src/frontend' })
-const handle = app.getRequestHandler()
+const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-  createServer((req, res) => {
-    // Be sure to pass `true` as the second argument to `url.parse`.
-    // This tells it to parse the query portion of the URL.
-    const parsedUrl = parse(req.url, true)
-    const { pathname, query } = parsedUrl
+  const server = express()
+  server.use(bodyParser.json())
+  server.use(bodyParser.urlencoded({ extended: false }))
+  server.use(cookieParser())
+  server.use(express.static('/.dist'))
 
-    if (pathname === '/a') {
-      app.render(req, res, '/b', query)
-    } else if (pathname === '/b') {
-      app.render(req, res, '/a', query)
-    } else {
-      handle(req, res, parsedUrl)
-    }
-  }).listen(3000, err => {
+  server.get('*', (req, res) => {
+    handle(req, res);
+  });
+
+  // Pages
+  server.get('/', (req, res) => app.render(req, res, '/index', req.params))
+  server.get('/login', (req, res) => app.render(req, res, '/login', req.params))
+
+  server.listen(PORT, (err) => {
     if (err) throw err
-    console.log('> Ready on http://localhost:3000')
+    console.log(`> Ready on http://localhost:${PORT}`)
   })
+  // server.timeout = SERVER_TIMEOUT
 })

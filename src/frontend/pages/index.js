@@ -12,10 +12,6 @@ class Counter extends React.Component {
     return { isServer }
   }
 
-  componentDidMount () {
-    this.timer = this.props.startClock()
-  }
-
   componentWillUnmount () {
     clearInterval(this.timer)
   }
@@ -25,14 +21,7 @@ class Counter extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addCount: bindActionCreators(addCount, dispatch),
-    startClock: bindActionCreators(startClock, dispatch)
-  }
-}
-
 export default connect(
   null,
-  mapDispatchToProps
+  null
 )(Counter)

@@ -1,4 +1,7 @@
 import react from 'react'
+import './Layout.css'
+import 'antd/dist/antd.css'
+
 import { Layout, Menu, Breadcrumb } from 'antd'
 const { Header, Content, Footer } = Layout
 
