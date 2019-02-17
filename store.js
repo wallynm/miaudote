@@ -3,9 +3,6 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 
 const exampleInitialState = {
-  lastUpdate: 0,
-  light: false,
-  count: 0
 }
 
 export const actionTypes = {

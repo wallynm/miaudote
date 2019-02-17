@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Layout from 'components/Layout'
-import Signup from 'components/Login/Signup'
+import Signup from 'components/Signup/Signup'
 
-const Login = () => (
+const Signup = () => (
   <Layout title='Index Page' linkTo='/other'>
     <Signup/>
   </Layout>
@@ -12,4 +12,4 @@ const Login = () => (
 export default connect(
   null,
   null
-)(Login)
+)(Signup)
