@@ -24,10 +24,10 @@ const LayoutTemplate = ({ children, routerState }) => {
           style={{ lineHeight: '64px' }}
           >
           <Menu.Item key="/">
-            <Link href="/">Home</Link>
+            <Link href="/Home" as="/">Home</Link>
           </Menu.Item>
           <Menu.Item key="/login">
-            <Link href="/login" replace>Login</Link>
+            <Link href="/Login" as="/login" replace>Login</Link>
           </Menu.Item>    
         </Menu>
       </Header>

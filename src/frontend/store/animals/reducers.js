@@ -1,7 +1,8 @@
 import dotProp from 'dot-prop-immutable'
 
 import {
-    SET_USER_AUTH
+  SET_ANIMAL_FAVORITE,
+  SET_ANIMAL_LIKE
 } from './actionTypes'
 
 export const initialState = {
@@ -9,7 +10,8 @@ export const initialState = {
 }
 
 const ACTION_HANDLERS = {
-  [SET_USER_AUTH]: state => dotProp.set(state, 'order.customer.has_password', true)
+  [SET_ANIMAL_FAVORITE]: (state, action) => dotProp.toggle(state, `${parseInt(action.payload.animalId) - 1}.favorite`),
+  [SET_ANIMAL_LIKE]: (state, action) => dotProp.toggle(state, `${parseInt(action.payload.animalId) - 1}.like`)
 }
 
 const reducers = (state = initialState, action) => {

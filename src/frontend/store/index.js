@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 import Router from '../../routes'
 
-const initData = {}
+const initData = require('./mock').default
 
 const routerMiddleware = createRouterMiddleware({
   Router,

@@ -1,0 +1,1 @@
+export const animalsListSelector = state => state.animals

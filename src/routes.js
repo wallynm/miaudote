@@ -2,6 +2,6 @@
 const nextRoutes = require('next-routes')
 const routes = module.exports = nextRoutes()
 
-routes.add('index', '/')
-routes.add('login', '/login')
-routes.add('signup', '/signup')
+routes.add('Home', '/')
+routes.add('Login', '/login')
+routes.add('Signup', '/signup')
