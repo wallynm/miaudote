@@ -8,7 +8,8 @@
       "alias": {
         "components": "./src/frontend/components",
         "store": "./src/frontend/store",
-        "test": "./test"
+        "test": "./test",
+        "routes": "./src/routes"
       }
     }]
   ]

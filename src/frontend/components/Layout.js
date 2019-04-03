@@ -8,9 +8,12 @@ const { Header, Content, Footer } = Layout
 
 import { connect } from 'react-redux'
 
-const LayoutTemplate = ({ children, routerState }) => {
-  console.info(routerState.location)
-  const currentPath = routerState.location.pathname || '/'
+
+import { Router } from 'routes'
+
+const LayoutTemplate = ({ children, routerState, url }) => {
+  console.info(url)
+  const currentPath = '/'
   console.info(currentPath)
 
   return (
